@@ -1,20 +1,20 @@
-import { generateToken, validateTokenHandler, saveTokenHandler } from '../controllers/token.controller.js';
+import { generateTokenController, validateTokenController, updateTokenController } from '../controllers/token.controller.js';
 
 const tokenRoutes = [
     {
         method: 'GET',
         path: '/tokens/generate',
-        handler: generateToken
+        handler: generateTokenController
     },
     {
         method: 'GET',
         path: '/tokens/validate/{token}',
-        handler: validateTokenHandler
+        handler: validateTokenController
     },
     {
         method: 'POST',
-        path: '/tokens/save',
-        handler: saveTokenHandler
+        path: '/tokens/update',
+        handler: updateTokenController
     }
 ];
 
