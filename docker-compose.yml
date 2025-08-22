@@ -1,0 +1,70 @@
+version: "3.9"
+services:
+  seguridad:
+    build: ./microservicio-seguridad
+    container_name: seguridad_service
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    networks:
+      - backend_net
+
+  clientes:
+    build: ./microservicio-clientes
+    container_name: clientes_service
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - MYSQL_HOST=host.docker.internal
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=161104
+      - MYSQL_DATABASE=prueba_tecnica
+    networks:
+      - backend_net
+    depends_on:
+      - seguridad
+      - redis
+      - rabbitmq
+
+  correos:
+    build: ./microservicio-correos
+    container_name: correos_service
+    ports:
+      - "6000:6000"
+    environment:
+      - PORT=6000
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+      - MYSQL_HOST=host.docker.internal
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=161104
+      - MYSQL_DATABASE=prueba_tecnica
+    networks:
+      - backend_net
+    depends_on:
+      - rabbitmq
+
+  redis:
+    image: redis:7
+    container_name: redis_service
+    ports:
+      - "6379:6379"
+    networks:
+      - backend_net
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_service
+    ports:
+      - "5672:5672"   # comunicación entre microservicios
+      - "15672:15672" # dashboard web propio de rabbit
+    networks:
+      - backend_net
+
+networks:
+  backend_net:
+    driver: bridge
