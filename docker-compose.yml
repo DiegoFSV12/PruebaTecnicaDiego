@@ -35,9 +35,9 @@ services:
     build: ./microservicio-correos
     container_name: correos_service
     ports:
-      - "6000:6000"
+      - "8000:8000"
     environment:
-      - PORT=6000
+      - PORT=8000
       - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
       - MYSQL_HOST=host.docker.internal
       - MYSQL_USER=root

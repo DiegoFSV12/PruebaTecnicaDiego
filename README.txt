@@ -4,7 +4,7 @@ INFORMACIÓN:
 
 Microservicio de seguridad -> http://localhost:4000
 Microservicio de clientes -> http://localhost:5000
-Microservicio de correos -> http://localhost:6000
+Microservicio de correos -> http://localhost:8000
 
 
 
@@ -37,8 +37,8 @@ Microservicio de Clientes:
         } 
 
 Microservicio de Correos:
-  GET http://0.0.0.0:6000/email/{id} - Recupera los datos de un correo enviado por el id.
-  POST http://0.0.0.0:6000/email/send - Registra un correo en la base de datos, simulando el envio del mismo.
+  GET http://0.0.0.0:8000/email/{id} - Recupera los datos de un correo enviado por el id.
+  POST http://0.0.0.0:8000/email/send - Registra un correo en la base de datos, simulando el envio del mismo.
   Enviar asi:
         {
           "id_cliente": 1,

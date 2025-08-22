@@ -5,7 +5,7 @@ dotenv.config();
 
 export const createServer = async () => {
   const server = Hapi.server({
-    port: 6000,
+    port: 8000,
     host: '0.0.0.0',
   });
 
