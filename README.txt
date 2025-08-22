@@ -22,3 +22,16 @@ Microservicio de Seguridad:
         }
 
     GET http://localhost:4000/tokens/validate/{token} - Valida si el token esta en la BD y si su estado es 1 (True), retorna true si lo esta y false sino
+
+
+Microservicio de Clientes:
+  GET http://localhost:5000/globals - Recupera todos los parametros globales de la base de datos
+  POST http://localhost:5000/clients/register - Registra al usuario en la base de datos.
+  Enviar asi:
+        {
+          "Tipo_Documento": "DNI",
+          "Num_Documento": "12345678",
+          "Nombres": "guestName",
+          "Apellidos": "guestLastName",
+          "FechaNacimiento": "1995-04-12"
+        } 

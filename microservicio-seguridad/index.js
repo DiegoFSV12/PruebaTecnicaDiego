@@ -10,9 +10,9 @@ const init = async () => {
         const server = await createServer();
         await server.start();
 
-        console.log(`🚀 Servidor corriendo en: ${server.info.uri}`);
+        console.log(`🚀 Microservicio de Seguridad corriendo en: ${server.info.uri}`);
     } catch (err) {
-        console.error('❌ Error iniciando el servidor:', err);
+        console.error('❌ Error iniciando el microservicio de Seguridad:', err);
         process.exit(1);
     }
 };
