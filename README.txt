@@ -25,7 +25,7 @@ Microservicio de Seguridad:
 
 
 Microservicio de Clientes:
-  GET http://localhost:5000/globals - Recupera todos los parametros globales de la base de datos.
+  /*Al iniciar el servicio este utiliza redis para llamar los parametros globales y los almacena*/
   POST http://localhost:5000/clients/register - Registra al usuario en la base de datos.
   Enviar asi:
         {

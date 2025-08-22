@@ -1,13 +1,10 @@
 import { getAllGlobals } from '../services/globals.service.js';
 
-export const getGlobals = async (req, res) => {
+export async function preloadGlobals() {
     try {
-        const globalParams = await getAllGlobals();
-        return res.response(globalParams).code(201);
+        const results = await getAllGlobals();
+        console.log('Parámetros globales precargados en Redis', results);
     } catch (error) {
-        console.error(error);
-        return res.response({ error: 'Error al recuperar parametros globales', details: error.message }).code(500);
+        console.error('Error precargando parámetros globales:', error);
     }
-};
-
-
+}

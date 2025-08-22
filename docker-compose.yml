@@ -49,7 +49,7 @@ services:
       - rabbitmq
 
   redis:
-    image: redis:7
+    image: redis
     container_name: redis_service
     ports:
       - "6379:6379"
