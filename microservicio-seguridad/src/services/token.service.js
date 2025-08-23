@@ -1,26 +1,13 @@
-import { pool } from '../config/db.js';
+import * as TokenModel from '../models/token.model.js';
 
 export const generateRandomToken = async () => {
-    const token = Math.floor(10000000 + Math.random() * 90000000).toString();
-    const [result] = await pool.query(
-        'INSERT INTO Token (Token, Estado) VALUES (?,?)',
-        [token, true]
-    );
-    return { id: result.insertId, token };
+    return await TokenModel.generateRandomToken();
 };
 
-export const updateToken = async (token, newToken, idCliente) => {
-    const [result] = await pool.query(
-        'UPDATE Token SET Id_cliente = ?, Token = ? WHERE Token = ?',
-        [idCliente, newToken, token]
-    );
-    return result.affectedRows;
+export const updateToken = async (token, newToken, id_cliente) => {
+    return await TokenModel.updateToken(token, newToken, id_cliente);
 };
 
 export const isTokenValid = async (token) => {
-    const [rows] = await pool.query(
-        'SELECT * FROM Token WHERE Token = ? and Estado = 1',
-        [token]
-    );
-    return rows.length > 0;
+    return await TokenModel.isTokenValid(token);
 };

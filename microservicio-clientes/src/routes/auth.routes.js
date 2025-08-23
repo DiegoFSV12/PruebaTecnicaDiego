@@ -1,10 +1,10 @@
-import { registerCliente } from '../controllers/auth.controller.js';
+import { registerClientControl } from '../controllers/auth.controller.js';
 
 const authRoutes = [
   {
     method: 'POST',
     path: '/clients/register',
-    handler: registerCliente,
+    handler: registerClientControl,
   },
 ];
 
