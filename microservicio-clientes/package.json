@@ -7,9 +7,10 @@
         "start": "node index.js"
     },
     "dependencies": {
-        "mysql2": "^3.9.0",
         "@hapi/hapi": "^21.3.2",
+        "amqplib": "^0.10.8",
         "dotenv": "^16.4.5",
+        "mysql2": "^3.9.0",
         "redis": "^5.6.1"
     }
 }
