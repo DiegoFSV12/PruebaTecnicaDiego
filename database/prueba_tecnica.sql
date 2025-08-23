@@ -14,6 +14,7 @@ CREATE TABLE Token (
     Id INT AUTO_INCREMENT PRIMARY KEY,
     Token CHAR(8) UNIQUE NOT NULL,
     Id_cliente INT,
+    Estado BOOLEAN NOT NULL,
     FOREIGN KEY (Id_cliente) REFERENCES Clientes(Id)
 );
 
@@ -22,6 +23,8 @@ CREATE TABLE ParametrosGlobales (
     Parametro VARCHAR(100) UNIQUE NOT NULL,
     Estado BOOLEAN NOT NULL
 );
+
+INSERT INTO ParametrosGlobales(Parametro, Estado) VALUES('ENVIAR_CORREO',true)
 
 CREATE TABLE CorreosEnviados (
     Id INT AUTO_INCREMENT PRIMARY KEY,
