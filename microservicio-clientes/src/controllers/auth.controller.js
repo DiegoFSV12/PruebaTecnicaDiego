@@ -8,7 +8,6 @@ export const registerClientControl = async (req, res) => {
 
     return res.response({ message: 'Cliente registrado', id: clienteId }).code(201);
   } catch (error) {
-    console.error(error);
     return res.response({ error: 'Error registrando cliente', details: error.message }).code(500);
   }
 };
