@@ -7,7 +7,8 @@ CREATE TABLE Clientes (
     Num_Documento VARCHAR(20) UNIQUE NOT NULL,
     Nombres VARCHAR(100) NOT NULL,
     Apellidos VARCHAR(100) NOT NULL,
-    FechaNacimiento DATE NOT NULL
+    FechaNacimiento DATE NOT NULL,
+    BonoBienvenida VARCHAR(100) NULL
 );
 
 CREATE TABLE Token (
