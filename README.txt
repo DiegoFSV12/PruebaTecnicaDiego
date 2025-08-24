@@ -1,12 +1,24 @@
 ## Prueba Tecnica
 
+COMO INICIAR EL PROYECTO:
+Creamos la base de datos MySQL empleando el script ubicado en la carpeta "database" en la raiz del proyecto.
+
+Copiamos el archivo ".env.example" (Se incluyen las variables con fines de prueba)
+
+Para ajustar los puertos de las variables de entorno estos deben coincidir con los establecidos en el archivo docker-compose.yml
+  - Ajustar variables de entorno de la base de datos en MySQL
+  - Ajustar las variables de entorno de Redis
+  - Ajustar las variables de entorno de Rabbitmq
+
+Una vez configurada las variables de entorno y la base de datos abriremos docker y utilizaremos el siguiente comando.
+  - docker compose up
+
+
 INFORMACIÓN:
 
 Microservicio de seguridad -> http://localhost:4000
 Microservicio de clientes -> http://localhost:5000
 Microservicio de correos -> http://localhost:8000
-
-
 
 
 

@@ -2,9 +2,10 @@ import { pool } from '../config/db.js';
 import { createClient } from 'redis';
 
 const client = createClient({
-    url: 'redis://redis:6379'
+  url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`
 });
 await client.connect();
+
 
 export const getAllGlobals = async () => {
     const globals = await client.get('globalParams');
