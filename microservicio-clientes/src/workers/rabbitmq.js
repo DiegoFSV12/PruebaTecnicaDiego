@@ -1,7 +1,7 @@
 // sendOrder.js
 import amqp from 'amqplib';
 
-const RABBIT_URL = process.env.RABBIT_URL || 'amqp://guest:guest@rabbitmq:5672';
+const RABBIT_URL = process.env.RABBITMQ_URL;
 const QUEUE = 'ordenes';
 
 
@@ -16,7 +16,7 @@ export async function sendOrder(order) {
 
     // Enviar mensaje
     channel.sendToQueue(QUEUE, Buffer.from(JSON.stringify(order)));
-    console.log("✅ Orden enviada:", order);
+    console.log("CLIENTES - Orden enviada por rabbitmq:");
 
     // Cerrar después de un momento
     setTimeout(() => {
@@ -24,7 +24,7 @@ export async function sendOrder(order) {
       connection.close();
     }, 500);
   } catch (error) {
-    console.error("❌ Error enviando la orden:", error.message);
+    console.error("❌ Error enviando la orden desde Clientes:", error.message);
   }
 }
 

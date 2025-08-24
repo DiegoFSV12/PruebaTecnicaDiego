@@ -1,7 +1,8 @@
 // receiveOrder.js
+import {sendEmail} from '../services/mail.service.js'
 import amqp from 'amqplib';
 
-const RABBIT_URL = process.env.RABBIT_URL || 'amqp://guest:guest@rabbitmq:5672';
+const RABBIT_URL = process.env.RABBITMQ_URL;
 const QUEUE = 'ordenes';
 
 export async function receiveOrder() {
@@ -13,20 +14,20 @@ export async function receiveOrder() {
     // Asegurar que la cola exista
     await channel.assertQueue(QUEUE, { durable: true });
 
-    console.log("📡 Esperando órdenes en la cola:", QUEUE);
+    console.log("CORREOS - Esperando órdenes en la cola :", QUEUE);
 
     // Recibir mensajes
-    channel.consume(QUEUE, msg => {
+    channel.consume(QUEUE, async msg => {
       if (msg !== null) {
-        const content = JSON.parse(msg.content.toString());
-        console.log("📥 Orden recibida:", content);
-        return content;
-
+        const {id_cliente, asunto, contenido} = JSON.parse(msg.content.toString());
+        console.log("CORREOS - Orden recibida:");
+        const email = await sendEmail(id_cliente,asunto,contenido);
+        console.log("Se envio el email de bienvenida : ",email)
         // Confirmar (acknowledge) que se procesó
         channel.ack(msg);
       }
     });
   } catch (error) {
-    console.error("❌ Error recibiendo orden:", error.message);
+    console.error("❌ Error recibiendo orden en Correos:", error.message);
   }
 }

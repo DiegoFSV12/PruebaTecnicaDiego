@@ -1,5 +1,5 @@
 import Hapi from '@hapi/hapi';
-import mailRoutes from './routes/mail.routes.js';
+import { receiveOrder } from './workers/rabbitmq.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -8,8 +8,9 @@ export const createServer = async () => {
     port: 8000,
     host: '0.0.0.0',
   });
-
-  server.route(mailRoutes);
-
+  // Espera 15 segundos antes de ejecutar para dejar que rabbit cargue completamente
+  setTimeout(() => {
+    receiveOrder();
+  }, 15000);
   return server;
 };

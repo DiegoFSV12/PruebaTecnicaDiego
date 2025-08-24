@@ -18,10 +18,3 @@ const init = async () => {
 };
 
 init();
-
-import { receiveOrder } from './src/workers/rabbitmq.js';
-
-// Espera 40 segundos antes de ejecutar
-setTimeout(() => {
-  receiveOrder();
-}, 15000);
