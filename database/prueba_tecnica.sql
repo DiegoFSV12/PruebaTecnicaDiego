@@ -25,7 +25,7 @@ CREATE TABLE ParametrosGlobales (
     Estado BOOLEAN NOT NULL
 );
 
-INSERT INTO ParametrosGlobales(Parametro, Estado) VALUES('ENVIAR_CORREO',true)
+INSERT INTO ParametrosGlobales(Parametro, Estado) VALUES('ENVIAR_CORREO',true);
 
 CREATE TABLE CorreosEnviados (
     Id INT AUTO_INCREMENT PRIMARY KEY,
