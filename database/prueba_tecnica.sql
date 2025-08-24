@@ -3,8 +3,8 @@ USE prueba_tecnica;
 
 CREATE TABLE Clientes (
     Id INT AUTO_INCREMENT PRIMARY KEY,
-    Tipo_Documento VARCHAR(20) NOT NULL,
-    Num_Documento VARCHAR(20) UNIQUE NOT NULL,
+    Tipo_Documento VARCHAR(30) NOT NULL,
+    Num_Documento VARCHAR(8) UNIQUE NOT NULL,
     Nombres VARCHAR(100) NOT NULL,
     Apellidos VARCHAR(100) NOT NULL,
     FechaNacimiento DATE NOT NULL,
