@@ -64,7 +64,8 @@ Una vez configurada las variables de entorno y la base de datos abriremos docker
     "Num_Documento": "12345678",
     "Nombres": "guestName",
     "Apellidos": "guestLastName",
-    "FechaNacimiento": "1995-04-12"
+    "FechaNacimiento": "1995-04-12",
+    "bono": ""
   }
   ```
 

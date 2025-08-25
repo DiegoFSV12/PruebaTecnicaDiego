@@ -4,9 +4,9 @@ import {sendOrder} from '../workers/rabbitmq.js'
 
 export const registerClientControl = async (req, h) => {
   try {
-    const { token, Tipo_Documento, Num_Documento, Nombres, Apellidos, FechaNacimiento } = req.payload;
+    const { token, Tipo_Documento, Num_Documento, Nombres, Apellidos, FechaNacimiento, bono } = req.payload;
 
-    const clienteId = await registerClient(token, Tipo_Documento, Num_Documento, Nombres, Apellidos, FechaNacimiento);
+    const clienteId = await registerClient(token, Tipo_Documento, Num_Documento, Nombres, Apellidos, FechaNacimiento, bono);
     const globals = await getAllGlobals();
     const {Parametro,Estado} = globals.find(g => g.Parametro === 'ENVIAR_CORREO');
     if (Parametro && Estado == 1){
