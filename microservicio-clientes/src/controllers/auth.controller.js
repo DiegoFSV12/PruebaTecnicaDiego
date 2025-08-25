@@ -2,7 +2,7 @@ import { registerClient } from '../services/auth.service.js';
 import {getAllGlobals} from '../services/globals.service.js'
 import {sendOrder} from '../workers/rabbitmq.js'
 
-export const registerClientControl = async (req, res) => {
+export const registerClientControl = async (req, h) => {
   try {
     const { token, Tipo_Documento, Num_Documento, Nombres, Apellidos, FechaNacimiento } = req.payload;
 
@@ -16,9 +16,9 @@ export const registerClientControl = async (req, res) => {
         contenido: "Bienvenido estimado cliente."
       });
     }
-    return res.response({ message: 'Cliente registrado', id: clienteId }).code(201);
+    return h.response({ message: 'Cliente registrado', id: clienteId }).code(201);
   } catch (error) {
-    return res.response({ error: 'Error registrando cliente', details: error.message }).code(500);
+    return h.response({ error: 'Error registrando cliente', details: error.message }).code(500);
   }
 };
 

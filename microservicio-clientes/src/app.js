@@ -11,7 +11,7 @@ export const createServer = async () => {
     host: '0.0.0.0',
     routes: {
     cors: {
-      origin: ['*'] // Permite cualquier origen
+      origin: ['*'] //Permite cualquier origen
     }
   }
   });
