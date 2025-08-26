@@ -23,7 +23,8 @@ Una vez configurada las variables de entorno y la base de datos abriremos docker
 
 - Microservicio de seguridad -> [http://localhost:4000](http://localhost:4000)  
 - Microservicio de clientes -> [http://localhost:5000](http://localhost:5000)  
-- Microservicio de correos -> [http://localhost:8000](http://localhost:8000)  
+- Microservicio de correos -> [http://localhost:8000](http://localhost:8000)
+- Dashboard de RabbitMQ -> [http://localhost:15672](http://localhost:15672)  
 
 ---
 
